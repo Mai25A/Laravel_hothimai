@@ -22,3 +22,6 @@ Route::get('/home',function(){
 Route::get('/san-pham',function(){
     return view('product');
 });
+Route::get('/bai-hoc',function(){
+    return view('ghibai');
+});
