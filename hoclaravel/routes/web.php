@@ -22,6 +22,9 @@ Route::get('/', function () {
     // return $tr;
     return view('welcome');
 });
+Route::get('/home', function () {
+    return view('home');
+});
 // Route::post('/unicode',function(){
     //     $tr = 'phương thức post của path /unicode';
     //     return $tr;
@@ -44,14 +47,13 @@ Route::get('/', function () {
                         // });
                         
                         // Route::redirect('unicode','show-form');
-Route::prefix('admin')->Group(function(){
-    Route::get('/unicode',function(){
-        $tr = 'phương thức get của path /unicode';
+Route::prefix('admin')->middleware('check_login')->group(function(){
+    Route::get('/unicode/{id?}/slug?}.html',function($slug=null,$id=null){
+        $tr = 'phương thức get của path /unicode voi tham so:';
+        $tr.='id='.$id.'<br/>';
+        $tr.='slug='.$slug;
         return $tr;
         // return view('form');
-    });
-        Route::get('/show-form',function(){
-        return view('form');
     });
     Route::prefix('products')->group(function(){
         Route::get('/',function(){

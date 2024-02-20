@@ -9,3 +9,4 @@ if(env('APP_ENV')=='production'){
     echo 'Call to api local';
 }
 ?>
+<a href="<?php echo route('admin.show-form'.['id'=>1,'slug'=>'unicode']) ?>">Show form</a>
