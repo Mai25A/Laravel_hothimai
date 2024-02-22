@@ -5,6 +5,8 @@ use App\Models\User;
 use Illuminate\Routing\Router;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Attributes\Group;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\Admin\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,65 +19,24 @@ use PHPUnit\Framework\Attributes\Group;
 |
 */
 
-Route::get('/', function () {
-    // $tr= '<h1>Học lập trình tại UNICODE</h1>';
-    // return $tr;
-    return view('welcome');
+//clients Routes
+Route::prefix('categories')->group(function () {
+    //List of categories
+    Route::get('/', [CategoriesController::class, 'index'])->name('categories.list');
+    //Get details of a category (Apply show form to edit categories)
+    Route::get('/edit/{id}', [CategoriesController::class, 'getCategory'])->name('categories.edit');
+    //Handle updates chuyen muc
+    Route::post('/edit/{id}', [CategoriesController::class, 'updateCategory']);
+    //hien thi form add data
+    Route::get('/add', [CategoriesController::class, 'addCategory'])->name('categories.add');
+    //xu ly them chuyen muc/ handle add categorry
+    Route::post('/add', [CategoriesController::class, 'handleAddCategory']);
+    // delete category
+    Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategory'])->name('categories.delete');
+
 });
-Route::get('/home', function () {
-    return view('home');
-});
-// Route::post('/unicode',function(){
-    //     $tr = 'phương thức post của path /unicode';
-    //     return $tr;
-    // });
-    // Route::put('/unicode',function(){
-        //     return 'phương thức put của path /unicode';
-        // });
-        // Route::put('/unicode',function(){
-            //     return 'phương thức delete của path /unicode';
-            // });
-            // Route::patch('/unicode',function(){
-                //     return 'phương thức patch của path /unicode';
-                // });
-                // Route::match(['get','post'],'/unicode',function(){
-                    //     return $_SERVER['REQUEST_METHOD'];
-                    // });
-                    // Route::any('/unicode',function(Request $request){
-                        //     // $re = new Request();
-                        //     return $request->method();
-                        // });
-                        
-                        // Route::redirect('unicode','show-form');
-Route::prefix('admin')->middleware('check_login')->group(function(){
-    Route::get('/unicode/{id?}/slug?}.html',function($slug=null,$id=null){
-        $tr = 'phương thức get của path /unicode voi tham so:';
-        $tr.='id='.$id.'<br/>';
-        $tr.='slug='.$slug;
-        return $tr;
-        // return view('form');
-    });
-    Route::prefix('products')->group(function(){
-        Route::get('/',function(){
-            return 'Danh sách sản phẩm';
-        });
-        Route::get('add',function(){
-            return 'Thêm sản phẩm';
-        });
-        Route::get('edit',function(){
-            return 'Sửa sản phẩm';
-        });
-        Route::get('delete',function(){
-            return 'Xóa sản phẩm';
-        });
-    });
-});
-Route::get('/home',function(){
-    return view('home');
-});
-Route::get('/san-pham',function(){
-    return view('product');
-});
-Route::get('/bai-hoc',function(){
-    return view('ghibai');
+//admin routes
+Route::prefix('admin')->group(function(){
+        Route::resource('products',ProductsController::class);
+   
 });
