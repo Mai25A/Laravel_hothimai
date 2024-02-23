@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
+    public function __construct(){
+        echo "KHoi dong product";
+        //theo cach truyen thong thif thuowng su dung session de check login 
+        
+
+    }
     /**
      * Display a listing of the resource.
      */
