@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use PHPUnit\Framework\Attributes\Group;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ use App\Http\Controllers\Admin\ProductsController;
 */
 
 //clients Routes
+Route::get('/',function(){
+    return '<h1> TRang chur unicpde </h1>';
+})->name('home');
 Route::prefix('categories')->group(function () {
     //List of categories
     Route::get('/', [CategoriesController::class, 'index'])->name('categories.list');
@@ -36,7 +40,8 @@ Route::prefix('categories')->group(function () {
 
 });
 //admin routes
-Route::prefix('admin')->group(function(){
-        Route::resource('products',ProductsController::class);
-   
+Route::middleware('checkadminlogin')->prefix('admin')->group(function () {
+    Route::get('/', [DashboardController::class, 'index']);
+    Route::middleware('checkadminproduct')->resource('products', ProductsController::class);
+
 });
