@@ -8,6 +8,7 @@ use PHPUnit\Framework\Attributes\Group;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\homeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,7 @@ use App\Http\Controllers\Admin\DashboardController;
 */
 
 //clients Routes
-Route::get('/',function(){
-    return '<h1> TRang chur unicpde </h1>';
-})->name('home');
+Route::get('/homm',[homeController::class,'index'])->name('home');
 Route::prefix('categories')->group(function () {
     //List of categories
     Route::get('/', [CategoriesController::class, 'index'])->name('categories.list');
