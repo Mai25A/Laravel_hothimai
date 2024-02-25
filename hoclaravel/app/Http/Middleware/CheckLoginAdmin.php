@@ -18,6 +18,9 @@ class CheckLoginAdmin
         if (!$this->isLogin()){
             return redirect(route('home'));
         }
+        if($request->is('/admin/*')||$request->is('admin')){
+            echo "Hehe";
+        }
         return $next($request);
     }
     public function isLogin(){
