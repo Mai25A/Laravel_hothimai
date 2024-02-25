@@ -10,10 +10,18 @@ class CategoriesController extends Controller
 {
     //
     public function __construct(){
-
+        echo 'welcome ff';
     }
     //hien thi  list chuyen muc - get
-    public function index(){
+    public function index(Request $request){
+        // $allData = $request->all();
+        // dd($allData);
+        // $url =$request->fullUrl();
+        // echo $url;
+        $ip =$request->ip();
+        echo 'ip la'.$ip;
+        $method =$request->method();
+        echo $method;
         return view('clients/categories/list');  
     }
     //Lays ra mot chuyen muc theo id - get
@@ -25,7 +33,9 @@ class CategoriesController extends Controller
         return 'submit category:'.$id;
     }
     //show  form them du lieu -GET
-    public function addCategory(){
+    public function addCategory(Request $request){
+        $path = $request->path();
+        echo $path;
         return view('clients/categories/add');  
     }
     //them du lieu vao chuyen muc- POst
