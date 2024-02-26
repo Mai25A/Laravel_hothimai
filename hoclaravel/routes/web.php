@@ -36,6 +36,13 @@ Route::prefix('categories')->group(function () {
     Route::post('/add', [CategoriesController::class, 'handleAddCategory']);
     // delete category
     Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategory'])->name('categories.delete');
+    // hien thi form upload
+    Route::get('/upload', [CategoriesController::class, 'getFile']);
+    //xu li file
+    Route::post('/upload', [CategoriesController::class, 'handleFile'])->name('categories.upload');
+
+
+
 
 });
 //admin routes
