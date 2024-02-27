@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 
 class homeController extends Controller
 {
-    //
+    public $data = [];
     //Action index()
 public function index(){ 
-    $title = "Hoc lap tronhhh";
-    // $dataView = [
-    //     'title'=> $title
-    // ];
-
-    //compact('title')
-    // return view('home')->with('title',$title);    
-        return View::make('home',compact('title'));
+    $this->data['welcome'] = "Hoc lap trinh laravel";
+    $this->data['content'] = '<h3>cHUONG1: Nhap mon laravel</h3>
+    <p>kien thuwc 1</P>
+    <p>kien thuwc 2</P>
+    <p>kien thuwc 3</P>';
+    $this->data['index'] = 10;
+    $this-> data['check'] = true;
+    return view('home', $this->data);
 }
 //Action getNews()
 public function getNews(){
