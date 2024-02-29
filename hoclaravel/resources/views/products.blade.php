@@ -15,7 +15,7 @@
     @extends('layouts.client')
 
     @section('title')
-    <h1>TRang chu</h1>
+    <h1>san pham </h1>
     @endsection
 
     @section('sidebar')

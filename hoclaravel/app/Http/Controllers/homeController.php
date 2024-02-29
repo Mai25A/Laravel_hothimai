@@ -24,5 +24,11 @@ public function getNews(){
 return 'News list';
 }
 public function getCategories($id) { 
-    return 'Chuyên mục: '.$id; }
+    return 'Chuyên mục: '.$id; 
 }
+public function products(){
+    $this->data['title'] = 'san pham';
+    return view('clients.products',$this->data);
+}
+}
+
