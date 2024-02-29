@@ -51,3 +51,4 @@ Route::middleware('checkadminlogin')->prefix('admin')->group(function () {
     Route::middleware('checkadminproduct')->resource('products', ProductsController::class);
 
 });
+Route::get('/sp',[homeController::class,'products']);
