@@ -17,9 +17,7 @@
     </header>
     <main>
         <h1>main</h1>
-       <script>
-         Hello, @{{$name}};
-       </script>
+       
     </main>
     <footer>
         <h1>footer</h1>
