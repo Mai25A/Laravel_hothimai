@@ -30,5 +30,16 @@ public function products(){
     $this->data['title'] = 'san pham';
     return view('clients.products',$this->data);
 }
+public function getAdd(){
+    $this->data['title'] = 'them san pham';
+
+    return view('clients.blocks.add',$this->data);
+}
+public function postAdd(Request $request){
+    return $request.'hih';
+}
+public function putAdd(Request $request){
+    return $request.'hihe';
+}
 }
 
