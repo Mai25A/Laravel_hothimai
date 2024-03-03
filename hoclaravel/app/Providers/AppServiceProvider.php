@@ -20,8 +20,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Blade::directive('datetime',function($expression){
-            return "<?php echo $expression ?>";
+        Blade::if('env',function($value){
+            //trar ve gia trij boolean
+            if(config('app.env')===$value){
+                return true;
+            }
+            return false;
         });
     }
 }
