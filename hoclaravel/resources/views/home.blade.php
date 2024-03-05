@@ -23,15 +23,12 @@
         @endenv
         <!-- <x-alert type="danger"/> -->
         <x-alert type="danger" content="dat hang thanh cong"/>    
-        <!-- <x-package-alert/>
-        <x-inputs.button/>
-        <x-forms-button/> -->
     @push('script')
         <script>
             console.log('push lan 2')
         </script>
     @endpush
-
+        
     @endsection
     @section('sidebar')
         @parent 

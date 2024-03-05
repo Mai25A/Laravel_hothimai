@@ -55,6 +55,7 @@ Route::get('/sp',[homeController::class,'products']);
 Route::get('/them-sp',[homeController::class,'getAdd']);
 Route::post('/them-sp',[homeController::class,'postAdd']);
 Route::put('/them-sp',[homeController::class,'putAdd']);
+Route::get('/demo',[homeController::class,'getArray']);
 
 
 
