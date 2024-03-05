@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class homeController extends Controller
 {
     public $data = [];
-    //Action index()
+    //Action index()N
 public function index(){ 
     $this->data['welcome'] = "Hoc lap trinh laravel";
     $this->data['content'] = '<h3>cHUONG1: Nhap mon laravel</h3>
@@ -41,5 +41,14 @@ public function postAdd(Request $request){
 public function putAdd(Request $request){
     return $request.'hihe';
 }
+public function getArray(){
+    $content = [
+        'name'=>'Mai',
+        'description'=>'sinh  vueb cua PNv',
+        'session'=>'laravel'
+    ];  
+    return $content;
+}
+
 }
 
