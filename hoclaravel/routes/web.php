@@ -56,6 +56,17 @@ Route::get('/them-sp',[homeController::class,'getAdd']);
 Route::post('/them-sp',[homeController::class,'postAdd']);
 Route::put('/them-sp',[homeController::class,'putAdd']);
 Route::get('/demo',[homeController::class,'getArray']);
+// Route::get('/demo',function(){
+//     $cnten = [
+//         'name'=>'uni',
+//         'version'=>'lv10',
 
+//     ];
+//     return response()->json($cnten);
+// });
+// Route::get('/demo-response',function(){
+    
+//     return view('demo');
+// });
 
 
