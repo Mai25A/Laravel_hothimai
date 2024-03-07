@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\View;
 
 use Illuminate\Http\Request;
-
 class homeController extends Controller
 {
     public $data = [];
@@ -48,6 +47,19 @@ public function getArray(){
         'session'=>'laravel'
     ];  
     return $content;
+}
+public function downLoad(Request $request){
+    if(!empty($request->image)){
+        $image = trim($request->image);
+        $fileName = 'image_'.uniqid().'.jpg'; 
+        // $fileName = basename($image);
+
+        // return response()->streamDownload(function()use ($image){
+        //     $imageContent = file_get_contents($image);
+        //     echo $imageContent;
+        // },$filename);
+        return response()->download($image, $fileName);
+        }
 }
 
 }
