@@ -69,4 +69,4 @@ Route::get('/demo',[homeController::class,'getArray']);
 //     return view('demo');
 // });
 
-
+Route::get('down-load',[homeController::class,'downLoad'])->name('downLoadimage');

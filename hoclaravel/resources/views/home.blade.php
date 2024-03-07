@@ -21,23 +21,27 @@
             @else
             <p>khong phai moi truowng dev</p>
         @endenv
-        <!-- <x-alert type="danger"/> -->
-        <x-alert type="danger" content="dat hang thanh cong"/>    
-    @push('script')
-        <script>
-            console.log('push lan 2')
-        </script>
-    @endpush
+            <!-- <x-alert type="danger"/> -->
+            <x-alert type="danger" content="dat hang thanh cong"/>    
+        @push('script')
+            <script>
+                console.log('push lan 2')
+            </script>
+        @endpush
         
-    @endsection
-    @section('sidebar')
+        @endsection
+        @section('sidebar')
         @parent 
         <h3>home sidebar</h3>
-    @endsection
+        @endsection
+        
+        @section('content')
+        <h1>TRang chu</h1>
+        <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Golden_tabby_and_white_kitten_n01.jpg/1200px-Golden_tabby_and_white_kitten_n01.jpg" alt=""></p>
+        <p><a href="{{ route('downLoadimage').'?image=https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Golden_tabby_and_white_kitten_n01.jpg/1200px-Golden_tabby_and_white_kitten_n01.jpg'}}" class="btn btn-success" >Down loasd anh</a></p>
+        <p><a href="{{ route('downLoadimage').'?image='.public_path('storage/image_65e9aa10d925b.jpg')}}" class="btn btn-success" >Down loasd anh</a></p>
 
-    @section('content')
-    <h1>TRang chu</h1>
-    @endsection
+        @endsection
 
     @section('js')
     @endsection
@@ -47,5 +51,6 @@
         console.log('push lan 1')
     </script>
     @endpush
+    
 </body>
 </html>
