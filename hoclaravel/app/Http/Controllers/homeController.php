@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\View;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
 class homeController extends Controller
 {
     public $data = [];
@@ -34,8 +35,20 @@ public function getAdd(){
 
     return view('clients.blocks.add',$this->data);
 }
-public function postAdd(Request $request){
-    return $request.'hih';
+public function postAdd(ProductRequest $request){
+    
+    // $request->validate([
+    //     'product_name' => 'required|min:6',
+    //     'price' => 'required|integer'
+    // ],[
+    //     'product_name.required' => 'Please enter Name',
+    //     'product_name.min' => 'Please enter more than 6 chracter',
+    //     'price.required' => 'Please enter Price',
+    //     'price.integer' => 'Please enter number'
+        
+    // ]);
+
+
 }
 public function putAdd(Request $request){
     return $request.'hihe';

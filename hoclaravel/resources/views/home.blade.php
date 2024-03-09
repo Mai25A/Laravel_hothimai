@@ -1,22 +1,6 @@
-@extends('layouts.clients')
+@extends('clients.layout.clients')
 @section('main_content')
-  <style>
-    .carousel-item{
-        width: 100%;
-        height: 500px;
-        background-color: blue
-    }
-    .carousel-item img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover
-    }
-  </style>
-</head>
-
-<body>
-
-
+@include('clients.layout.slide')
 
   <!-- Body -->
   <div class="container mt-4">
@@ -29,5 +13,5 @@
     </div>
   </div>
 
+  @endsection
 </body>
-@endsection

@@ -1,4 +1,16 @@
 <!-- Slide -->
+<style>
+  .carousel-item{
+      width: 100%;
+      height: 500px;
+      background-color: blue
+  }
+  .carousel-item img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+  }
+</style>
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">

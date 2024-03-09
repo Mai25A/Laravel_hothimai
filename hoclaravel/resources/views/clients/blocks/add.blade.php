@@ -1,35 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - unicode</title>
-    <style type="text/css" >
-        h1{
-            background-color: blueviolet;
-            color: aliceblue;
-        }
-    </style>
-</head>
-<body>
-    @extends('layouts.client')
 
-    @section('title')
+    @extends('clients.layout.clients')
+
+    @section('main_content')
         <h1> them san pham </h1>
+        <div class="container">
+            <form action="" method="post" >
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Ten san pham</label>
+                  <input type="text" class="form-control" id="name" placeholder="Ten san pham...">
+                  @error('product_name')
+                      <span style="text-danger" >{{ $message }}</span>
+                  @enderror
+                </div>
+                <div class="mb-3">
+                  <label for="price" class="form-label">Gia</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Gia...">
+                    @error('price')
+                        <span style="text-danger" >{{ $message }}</span>
+                    @enderror
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
     @endsection
-
-    @section('sidebar')
-        @parent 
-        <h3>home sidebar</h3>
-    @endsection
-
-    @section('content')
-    <h1>TRang add sp</h1>
-    <form action="" method="post" >
-        <input type="text" name="name">
-        <input type="hidden" name="_token" value="{{csrf_token()}}">
-        <input type="submit">
-    </form>
-    @endsection
-</body>
-</html>
