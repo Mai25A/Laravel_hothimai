@@ -5,6 +5,9 @@
         <h1> them san pham </h1>
         <div class="container">
             <form action="" method="post" >
+                @error('msg')
+                  <div class="alert alert-danger text-center">{{ $message }}</div>
+                @enderror
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="mb-3">
                   <label for="name" class="form-label">Ten san pham</label>
