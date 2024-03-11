@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
@@ -35,8 +36,18 @@ public function getAdd(){
 
     return view('clients.blocks.add',$this->data);
 }
-public function postAdd(ProductRequest $request){
-    
+public function postAdd(Request $request){
+    $rules = [
+            'product_name' => 'required|min:6',
+            'price' => 'required|integer'
+    ];
+        $messages = [
+                'product_name.required' => 'Please enter Name',
+                'product_name.min' => 'Please enter more than 6 chracter',
+                'price.required' => 'Please enter Price',
+                'price.integer' => 'Please enter number'
+                
+        ];
     // $request->validate([
     //     'product_name' => 'required|min:6',
     //     'price' => 'required|integer'
@@ -47,6 +58,17 @@ public function postAdd(ProductRequest $request){
     //     'price.integer' => 'Please enter number'
         
     // ]);
+    $Validator = Validator::make($request->all(),$rules,$messages);
+    // $Validator->validate();
+    if($Validator->fails()){
+        // return 'validate that bai';
+        $Validator->errors()->add('msg','Vui long nhap du htong tin ');
+    }else{
+        // return 'validate thanh cong';
+        return redirect()->route('product')->with('msg','Validate thanh cong');
+    }
+    // $Validator->validate();
+    return back()->withErrors($Validator);
 
 
 }

@@ -13,7 +13,9 @@
 </head>
 <body>
     @extends('layouts.client')
-
+    @if (session('msg'))
+        <div class="alert alert-secondary">{{session('msg')}}</div>    
+    @endif
     @section('title')
     <h1>san pham </h1>
     @endsection
