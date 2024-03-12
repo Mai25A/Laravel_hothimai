@@ -12,9 +12,10 @@
     </style>
 </head>
 <body>
-    @extends('layouts.client')
+    @extends('clients.layout.clients')
+    @section('main_content')
     @if (session('msg'))
-        <div class="alert alert-secondary">{{session('msg')}}</div>    
+    <div class="alert alert-secondary">{{session('msg')}}</div>    
     @endif
     @section('title')
     <h1>san pham </h1>
@@ -27,6 +28,7 @@
 
     @section('content')
     <h1>TRang chu</h1>
+    @endsection
     @endsection
 </body>
 </html>

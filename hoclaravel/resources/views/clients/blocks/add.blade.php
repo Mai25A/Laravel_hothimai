@@ -10,15 +10,15 @@
                 @enderror
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="mb-3">
-                  <label for="name" class="form-label">Ten san pham</label>
-                  <input type="text" class="form-control" id="name" placeholder="Ten san pham...">
+                  <label for="product_name" class="form-label">Ten san pham</label>
+                  <input type="text" class="form-control" name="product_name" id="product_name" placeholder="Ten san pham...">
                   @error('product_name')
                       <span style="text-danger" >{{ $message }}</span>
                   @enderror
                 </div>
                 <div class="mb-3">
                   <label for="price" class="form-label">Gia</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Gia...">
+                  <input type="text" name="price" class="form-control" id="price" placeholder="Gia...">
                     @error('price')
                         <span style="text-danger" >{{ $message }}</span>
                     @enderror

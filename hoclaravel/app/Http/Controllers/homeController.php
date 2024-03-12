@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Validator;
-
+use App\Rules\Uppercase;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 class homeController extends Controller
@@ -38,7 +38,7 @@ public function getAdd(){
 }
 public function postAdd(Request $request){
     $rules = [
-            'product_name' => 'required|min:6',
+            'product_name' => ['required', 'min:6', new Uppercase],
             'price' => 'required|integer'
     ];
         $messages = [
@@ -65,7 +65,7 @@ public function postAdd(Request $request){
         $Validator->errors()->add('msg','Vui long nhap du htong tin ');
     }else{
         // return 'validate thanh cong';
-        return redirect()->route('product')->with('msg','Validate thanh cong');
+        return redirect()->route('products')->with('msg','Validate thanh cong');
     }
     // $Validator->validate();
     return back()->withErrors($Validator);

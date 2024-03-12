@@ -12,31 +12,27 @@
     </style>
 </head>
 <body>
-    @extends('layouts.client')
+    @extends('clients.layout.clients')
 
-    @section('title')
-    <h1>san pham </h1>
-    @push('script')
-    <script>
-        console.log('push lan 2')
-    </script>
-    @endpush
-    @endsection
+    @section('main_content')
+    @if (session('msg'))
+    <div class="alert alert-secondary">{{session('msg')}}</div>    
+    @endif
+        <h1>san pham </h1>
+        @push('script')
+        <script>
+            console.log('push lan 2')
+        </script>
+        @endpush
 
-    @section('sidebar')
-        @parent 
-        <h3>home sidebar</h3>
-    @endsection
+            <h3>home sidebar</h3>
 
-    @section('content')
-    <h1>TRang chu</h1>
+        <h1>TRang chu</h1>
+        @push('script')
+        <script>
+            console.log('push lan 1')
+        </script>
+        @endpush
     @endsection
-    @section('js')
-    @endsection
-    @push('script')
-    <script>
-        console.log('push lan 1')
-    </script>
-    @endpush
 </body>
 </html>
