@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\Group;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\homeController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ use App\Http\Controllers\homeController;
 */
 
 //clients Routes
-Route::get('/homm',[homeController::class,'index'])->name('home');
+Route::get('/homm',[HomeController::class,'index'])->name('home');
 Route::prefix('categories')->group(function () {
     //List of categories
     Route::get('/', [CategoriesController::class, 'index'])->name('categories.list');
@@ -51,11 +51,11 @@ Route::middleware('checkadminlogin')->prefix('admin')->group(function () {
     Route::middleware('checkadminproduct')->resource('products', ProductsController::class);
 
 });
-Route::get('/sp',[homeController::class,'products']);
-Route::get('/them-sp',[homeController::class,'getAdd']);
-Route::post('/them-sp',[homeController::class,'postAdd']);
-Route::put('/them-sp',[homeController::class,'putAdd']);
-Route::get('/demo',[homeController::class,'getArray']);
+Route::get('/sp',[HomeController::class,'products']);
+Route::get('/them-sp',[HomeController::class,'getAdd']);
+Route::post('/them-sp',[HomeController::class,'postAdd']);
+Route::put('/them-sp',[HomeController::class,'putAdd']);
+Route::get('/demo',[HomeController::class,'getArray']);
 // Route::get('/demo',function(){
 //     $cnten = [
 //         'name'=>'uni',
@@ -69,4 +69,4 @@ Route::get('/demo',[homeController::class,'getArray']);
 //     return view('demo');
 // });
 
-Route::get('down-load',[homeController::class,'downLoad'])->name('downLoadimage');
+Route::get('down-load',[HomeController::class,'downLoad'])->name('downLoadimage');
