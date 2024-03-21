@@ -31,5 +31,12 @@
         <input type="submit">
     </form>
     @endsection
+    @section('js')
+        <script>
+            $(document).ready(function(){
+            console.log('ok')
+            });
+        </script>
+    @endsection
 </body>
 </html>
