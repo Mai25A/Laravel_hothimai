@@ -15,7 +15,6 @@ class HomeController extends Controller
         // dd($products);
         return view('home',compact('products','allProducts'));  
     }
-
     /**
      * Show the form for creating a new resource.
      */
