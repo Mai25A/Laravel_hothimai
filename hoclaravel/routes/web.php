@@ -22,7 +22,7 @@ use App\Http\Controllers\HomeController;
 */
 
 //clients Routes
-Route::get('/homm',[HomeController::class,'index'])->name('home');
+Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::prefix('categories')->group(function () {
     //List of categories
     Route::get('/', [CategoriesController::class, 'index'])->name('categories.list');
