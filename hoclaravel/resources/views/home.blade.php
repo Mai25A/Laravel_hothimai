@@ -1,7 +1,5 @@
-@extends('layouts/client')
+@extends('layouts.client')
 @section('main_content')
-    
-
 <div class="rev-slider">
     <div class="fullwidthbanner-container">
                 <div class="fullwidthbanner">
