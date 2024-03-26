@@ -232,6 +232,7 @@
 					<div class="beta-products-list">
 						<h4>Related Products</h4>
 
+						
 						<div class="row">
 							<div class="col-sm-4">
 								<div class="single-item">
