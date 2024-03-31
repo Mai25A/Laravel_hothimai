@@ -19,48 +19,94 @@ class HomeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    
+    //Action getNews()
+    public function getNews(){
+    return 'News list';
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function getCategories($id) { 
+        return 'Chuyên mục: '.$id; 
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+    public function products(){
+        $this->data['title'] = 'san pham';
+        return view('clients.products',$this->data);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+    public function getAdd(){
+        $this->data['title'] = 'them san pham';
+    
+        return view('clients.blocks.add',$this->data);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function postAdd(Request $request){
+        return $request.'hih';
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+    public function putAdd(Request $request){
+        return $request.'hihe';
     }
+    public function getArray(){
+        $content = [
+            'name'=>'Mai',
+            'description'=>'sinh  vueb cua PNv',
+            'session'=>'laravel'
+        ];  
+        return $content;
+    }
+    public function downLoad(Request $request){
+        if(!empty($request->image)){
+            $image = trim($request->image);
+            $fileName = 'image_'.uniqid().'.jpg'; 
+        }
+    }
+            // $fileName = basename($image);
+        /**
+         * Show the form for creating a new resource.
+         */
+        public function create()
+        {
+            //
+    
+            // return response()->streamDownload(function()use ($image){
+            //     $imageContent = file_get_contents($image);
+            //     echo $imageContent;
+            // },$filename);
+            // return response()->download($image, $fileName);
+            }
+        /**
+         * Store a newly created resource in storage.
+         */
+        public function store(Request $request)
+        {
+            //
+        }
+    
+        /**
+         * Display the specified resource.
+         */
+        public function show(string $id)
+        {
+            //
+        }
+    
+        /**
+         * Show the form for editing the specified resource.
+         */
+        public function edit(string $id)
+        {
+            //
+        }
+    
+        /**
+         * Update the specified resource in storage.
+         */
+        public function update(Request $request, string $id)
+        {
+            //
+        }
+    
+        /**
+         * Remove the specified resource from storage.
+         */
+        public function destroy(string $id)
+        {
+            //
+        }
 }
