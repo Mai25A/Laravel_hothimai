@@ -2,41 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
 use Illuminate\Http\Request;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use App\Models\Cart;
+// use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 
 
-
-class HomeController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
-        $products = Products::all();
-        return view('pages.index', compact('products'));
     }
 
-    public function showCart()
-    {
-        $products = Products::take(3)->get();
-        return view('pages.checkout', compact('products'));
-       
-    }
 
-    public function about()
-    {
-        return view('pages.about');
-    }
-
-    public function contact()
-    {
-        return view('pages.contact');
-    }
     public function signUp()
     {
+    //     $carts = Cart::all();
+    //     return view('signup',compact('carts')); 
         return view('pages.signup');
     }
     public function postSignup(Request $req){
@@ -95,6 +79,6 @@ class HomeController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('home');
+        return redirect()->route('pages.index');
     }
 }

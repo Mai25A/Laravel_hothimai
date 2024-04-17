@@ -1,40 +1,48 @@
 <?php
 
 namespace App\Providers;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Blade;
-use App\View\Components\Alert;
-use App\View\Components\Inputs\Button;
-use App\View\Components\Forms\Button as FormButton;
 
+use Illuminate\Support\ServiceProvider;
+use App\Models\ProductType;
+use App\Models\Cart;
+use Illuminate\Support\Facades\View;
+use App\View\Composers\ProfileComposer;
+use Illuminate\Support\Facades;
+use Illuminate\Support\Facades\Session;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
+     *
+     * @return void
      */
-    public function register(): void
+    public function register()
     {
         //
     }
 
     /**
      * Bootstrap any application services.
+     *
+     * @return void
      */
-    public function boot(): void
-    {
-        Blade::if('env',function($value){
-            //trar ve gia trij boolean
-            if(config('app.env')===$value){
-                return true;
-            }
-            return false;
+    public function boot()
+    { // Cách 1 : share cho toàn bộ trang 
+        View::share('productTypes', ProductType::all());
+        
+        /* Cách 2 : Share cho trang cụ thể : 
+        Facades\View::composer('layout.header', 'product-type', function (View $view) {
+            $productTypes = ProductType::all());
         });
-        Blade::component('package-alert', Alert::class);
-        Blade::component('button', Button::class);
-        Blade::component('form-button', FormButton::class);
-
-
+        */
+      //chia sẻ biến Session('cart') cho các view header.blade.php và checkout.php
+        View::composer(['components.header','pages.checkout','pages.shopping_cart'],function($view){
+            if(Session('cart')){
+                $oldCart=Session::get('cart'); //session cart được tạo trong method addToCart của PageController
+                $cart=new Cart($oldCart);
+                $view->with(['cart'=>Session::get('cart'),'productCarts'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQty'=>$cart->totalQty]);
+            }
+        });
     }
 }
