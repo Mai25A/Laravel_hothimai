@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public $data = [];
+
     protected $product; // Remove the instantiation here
 
     public function __construct()
@@ -90,4 +91,5 @@ class HomeController extends Controller
                     ->orWhere('reviews', 'like', '%' . $keyword . '%');
             }
         }
-   
+    }
+}
