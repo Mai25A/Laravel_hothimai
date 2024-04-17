@@ -11,8 +11,12 @@
                    <ul class="top-details menu-beta l-inline">
                     @if (Auth::check())
                         <li><a href=""><i class="fa fa-user"></i> Tài khoản của bạn</a>
+                            <ul>
+                                <li><a href="{{ route('logout') }}">Logout</a></li>
+                                <li><a href="">Profile</a></li>
+                                <li><a href="">Profile</a></li>
+                            </ul>
                         </li>
-                        <li><a href="{{ route('logout') }}">Logout</a></li>
                     @else
                         <li><a href="{{route('login')}}"><i class="fa fa-user"></i> Đăng nhập</a></li>
                     @endif
