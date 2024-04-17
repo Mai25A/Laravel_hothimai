@@ -51,22 +51,22 @@ Route::middleware('checkadminlogin')->prefix('admin')->group(function () {
     Route::middleware('checkadminproduct')->resource('products', ProductsController::class);
 
 });
-Route::get('/sp',[HomeController::class,'products']);
-Route::get('/them-sp',[HomeController::class,'getAdd']);
-Route::post('/them-sp',[HomeController::class,'postAdd']);
-Route::put('/them-sp',[HomeController::class,'putAdd']);
-Route::get('/demo',[HomeController::class,'getArray']);
-// Route::get('/demo',function(){
-//     $cnten = [
-//         'name'=>'uni',
-//         'version'=>'lv10',
+// Route::get('/sp',[HomeController::class,'products']);
+// Route::get('/them-sp',[HomeController::class,'getAdd']);
+// Route::post('/them-sp',[HomeController::class,'postAdd']);
+// Route::put('/them-sp',[HomeController::class,'putAdd']);
+// Route::get('/demo',[HomeController::class,'getArray']);
+// // Route::get('/demo',function(){
+// //     $cnten = [
+// //         'name'=>'uni',
+// //         'version'=>'lv10',
 
-//     ];
-//     return response()->json($cnten);
-// });
-// Route::get('/demo-response',function(){
+// //     ];
+// //     return response()->json($cnten);
+// // });
+// // Route::get('/demo-response',function(){
     
-//     return view('demo');
-// });
+// //     return view('demo');
+// // });
 
-Route::get('down-load',[HomeController::class,'downLoad'])->name('downLoadimage');
+// Route::get('down-load',[HomeController::class,'downLoad'])->name('downLoadimage');
